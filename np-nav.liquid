@@ -1,0 +1,30 @@
+{% comment %}np-nav.liquid{% endcomment %}
+{% assign ct = section.settings.c_text %}
+{% assign cbg = section.settings.c_bg %}
+{% assign cp = section.settings.c_primary %}
+{% if section.settings.font_head == 'serif' %}{% assign fh = "Georgia,'Times New Roman',serif" %}{% else %}{% assign fh = "'Helvetica Neue',Arial,sans-serif" %}{% endif %}
+<style>
+.np-nav-s{display:flex;align-items:center;justify-content:space-between;padding:14px 32px;border-bottom:1px solid #e8e0d8;background:{{ cbg }};flex-wrap:wrap;gap:8px}
+.np-nav-s ul{display:flex;gap:18px;list-style:none;font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:{{ ct }};align-items:center;padding:0;margin:0}
+.np-nav-s li{cursor:pointer;white-space:nowrap}
+.np-nav-s-logo{text-align:center;flex:0 0 auto}
+.np-nav-s-name{font-family:{{ fh }};font-size:{{ section.settings.fs_logo }}px;font-weight:900;letter-spacing:.06em;color:{{ section.settings.c_logo }};line-height:1.1}
+.np-nav-s-sub{font-size:{{ section.settings.fs_sub }}px;letter-spacing:.25em;text-transform:uppercase;color:{{ section.settings.c_logo }};text-align:center}
+.np-nav-s-icons{display:flex;gap:16px;align-items:center;color:{{ ct }}}
+@media(max-width:768px){.np-nav-s{display:none}}
+</style>
+<nav class="np-nav-s">
+  <ul><li>HOME</li><li>DRESSES &#9662;</li><li>JACKETS &amp; COATS &#9662;</li><li>TOPS &amp; SHIRTS &#9662;</li><li>FOOTWEAR &#9662;</li><li>SWEATERS &amp; CARDIGANS &#9662;</li></ul>
+  <div class="np-nav-s-logo">
+    <div class="np-nav-s-name">{{ section.settings.logo }}</div>
+    <div class="np-nav-s-sub">{{ section.settings.city }}</div>
+  </div>
+  <ul><li>SWIMWEAR</li><li>JUMPSUITS</li><li>BOTTOMS</li><li>BAGS</li><li>OUR BESTSELLERS</li><li>CONTACT</li><li>TRACK YOUR ORDER</li></ul>
+  <div class="np-nav-s-icons">
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><line x1="3" x2="21" y1="6" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+  </div>
+</nav>
+{% schema %}
+{"name":"NP — Navigation Bar","settings":[{"type":"text","id":"logo","label":"Brand name","default":"THE ROSEMARY LANE"},{"type":"text","id":"city","label":"City tagline","default":"LONDON"},{"type":"color","id":"c_bg","label":"Background","default":"#faf7f2"},{"type":"color","id":"c_text","label":"Nav text","default":"#1a1a1a"},{"type":"color","id":"c_primary","label":"Accent","default":"#7B1A1A"},{"type":"color","id":"c_logo","label":"Logo colour","default":"#1a1a1a"},{"type":"select","id":"font_head","label":"Logo font","options":[{"value":"serif","label":"Serif"},{"value":"sans","label":"Sans-serif"}],"default":"serif"},{"type":"range","id":"fs_logo","label":"Logo size","min":14,"max":48,"step":1,"unit":"px","default":24},{"type":"range","id":"fs_sub","label":"Tagline size","min":7,"max":16,"step":1,"unit":"px","default":9}],"presets":[{"name":"NP — Navigation Bar"}]}
+{% endschema %}
